@@ -1,0 +1,27 @@
+#!/bin/sh
+touch test.txt
+echo "Vérification du fichier test.."
+sleep 3
+find test/* -printf '%T+ %p\n' | sort -r | head| cut -c32-  | grep .txt | cut -d '/' -f2-  >>  test.txt
+read -r first<test.txt
+mkdir $first 
+content="$(cat test/$first)"
+touch  $first/$first
+echo $content'\n' >> $first/$first
+sed -i '1d' test.txt 
+
+
+read -r first<test.txt
+mkdir $first 
+content="$(cat test/$first)"
+touch  $first/$first
+echo $content >> $first/$first
+sed -i '1d' test.txt 
+
+####
+#second part
+####
+
+
+
+echo "done"
